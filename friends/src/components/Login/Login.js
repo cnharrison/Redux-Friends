@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import { connect } from "react-redux";
-import { login } from "..actions";
+import { login } from "../../actions";
 
 class Login extends Component {
   state = {
@@ -10,8 +10,40 @@ class Login extends Component {
     }
   };
 
+  handleChange = event => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.login(this.state.credentials);
+  };
+
   render() {
-    return <h2>Login component</h2>;
+    return (
+      <div className="login">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+          />
+          <button>Log in</button>
+        </form>
+      </div>
+    );
   }
 }
 const mapStateToProps = state => {

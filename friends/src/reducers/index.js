@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions/";
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions";
 
 
 const initialState = {
@@ -11,9 +11,9 @@ const initialState = {
   updatingFriend: false
 };
 
-export default (state = initialState, action) => { 
+const reducer = (state = initialState, action) => { 
     switch(action.type) { 
-        case LOGIN_START: 
+        case LOGIN_START:
         return state;
         case LOGIN_SUCCESS: 
         return state; 
@@ -23,3 +23,5 @@ export default (state = initialState, action) => {
         return state; 
     }
 }
+
+export default reducer;
