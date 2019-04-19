@@ -1,5 +1,5 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN FAILURE } from "../actions/";
-\
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions/";
+
 
 const initialState = {
   error: null,
