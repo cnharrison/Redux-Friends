@@ -5,7 +5,7 @@ const Friend = props => {
     <div className="friend">
       <p>{props.name} </p>
       <p>{props.age} years old</p>
-      <p>email {props.email}</p>
+      <p>email: {props.email}</p>
     </div>
   );
 };

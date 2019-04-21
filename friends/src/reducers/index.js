@@ -2,9 +2,12 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  GET_FRIENDS,
+  GET_FRIENDS_SUCCESS,
   GET_FRIENDS_FAIL,
-  GET_FRIENDS_START
+  GET_FRIENDS_START,
+  ADD_FRIEND_START,
+  ADD_FRIEND_SUCCESS,
+  ADD_FRIEND_FAIL
 } from "../actions";
 
 const initialState = {
@@ -35,10 +38,11 @@ const reducer = (state = initialState, action) => {
         logginIn: false,
         error: action.payload
       };
-    case GET_FRIENDS:
+    case GET_FRIENDS_SUCCESS:
       return {
         ...state,
-        friends: action.payload
+        friends: action.payload,
+        fetchingFriends: false
       };
     case GET_FRIENDS_FAIL:
       return {
@@ -46,11 +50,28 @@ const reducer = (state = initialState, action) => {
         fetchingFriends: false,
         error: action.payload
       };
-      case GET_FRIENDS_START:
+    case GET_FRIENDS_START:
       return {
         ...state,
-        fetchingFriends: true,
-      }
+        fetchingFriends: true
+      };
+    case ADD_FRIEND_START:
+      return {
+        ...state,
+        savingFriends: true
+      };
+    case ADD_FRIEND_SUCCESS:
+      return {
+        ...state,
+        savingFriends: false,
+        friends: action.payload
+      };
+    case ADD_FRIEND_FAIL:
+      return {
+        ...state,
+        savingFriends: false,
+        error: action.payload
+      };
     default:
       return state;
   }
