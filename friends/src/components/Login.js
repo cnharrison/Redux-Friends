@@ -1,6 +1,6 @@
-import { React, Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions";
+import { login } from "../actions";
 
 class Login extends Component {
   state = {
@@ -21,7 +21,9 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.credentials);
+    this.props
+      .login(this.state.credentials)
+      .then(() => this.props.history.push("/protected"));
   };
 
   render() {

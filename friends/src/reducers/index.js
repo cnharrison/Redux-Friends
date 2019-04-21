@@ -1,5 +1,11 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions";
-
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  GET_FRIENDS,
+  GET_FRIENDS_FAIL,
+  GET_FRIENDS_START
+} from "../actions";
 
 const initialState = {
   error: null,
@@ -11,17 +17,43 @@ const initialState = {
   updatingFriend: false
 };
 
-const reducer = (state = initialState, action) => { 
-    switch(action.type) { 
-        case LOGIN_START:
-        return state;
-        case LOGIN_SUCCESS: 
-        return state; 
-        case LOGIN_FAILURE: 
-        return state; 
-        default: 
-        return state; 
-    }
-}
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOGIN_START:
+      return {
+        ...state,
+        loggingIn: true
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoggingIn: false
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        logginIn: false,
+        error: action.payload
+      };
+    case GET_FRIENDS:
+      return {
+        ...state,
+        friends: action.payload
+      };
+    case GET_FRIENDS_FAIL:
+      return {
+        ...state,
+        fetchingFriends: false,
+        error: action.payload
+      };
+      case GET_FRIENDS_START:
+      return {
+        ...state,
+        fetchingFriends: true,
+      }
+    default:
+      return state;
+  }
+};
 
 export default reducer;
