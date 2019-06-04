@@ -1,4 +1,4 @@
-# Redux Friends
+# Redux Friends 
 
 Topics:
 
@@ -50,13 +50,13 @@ Topics:
 
 ```js
 {
-  deletingFriend: false,
+  error: null  deletingFriend: false,
   fetchingFriends: false,
   friends: [],
   loggingIn: false,
   savingFriends: false,
   updatingFriend: false,
-  error: null
+
 }
 ```
 
